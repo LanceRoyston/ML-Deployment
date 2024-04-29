@@ -1,0 +1,21 @@
+FROM python:3.11.5
+
+WORKDIR /app
+
+COPY requirements.txt /app/
+
+COPY appV3.py /app/
+
+COPY model_V2.pkl /app/
+
+COPY LOGOV2.jpg /app/
+
+COPY label_encoderV2.pkl /app/
+
+COPY CHLA_clean_data_2024_Appointments.csv /app/
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 8501
+
+CMD ["streamlit", "run", "appV3.py"]
